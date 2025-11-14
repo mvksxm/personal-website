@@ -1,0 +1,69 @@
+.nav-appear {
+    background-color: #6da2f1 !important;
+    border: 2px solid #08224754 !important;
+}
+
+/* 8ad3e9 */
+/* #6da2f1 */
+
+.navbar {
+    transition: border-color 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0); 
+}
+
+.navbar .container {
+    padding: 8px;
+    display: flex;                 
+    justify-content: space-between;
+    align-items: center;      
+}
+
+/* CSS for the Brand on the Navbar */
+.navbar .container .name-brand {
+    font-family:'Montserrat', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    color: rgb(255, 255, 255) !important; 
+    padding-top: 2px;
+}
+
+
+/* CSS for the Navigation Items on the Navbar */
+.navbar-nav-ul {
+    margin-left: auto;
+}
+
+.navbar-nav-ul .nav-item {
+    margin-right: 20px;
+    font-family:'Montserrat', sans-serif;
+}
+
+.navbar-nav-ul .nav-item:hover {
+    color: rgb(255, 255, 255) !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.801),
+    0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+.navbar-nav-ul .nav-link {
+    color: rgb(255, 255, 255);
+}
+
+.navbar-nav-ul .nav-link:hover {
+    color: rgb(255, 255, 255)!important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.801),
+    0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+
+/* CSS section for the active class*/
+.active-selection { 
+    /* color: rgb(0, 0, 0) !important; */
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.801),
+    0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+/* Navbar icons related css */
+.navbar-icon {
+    height: auto;
+    width: 40px;
+}
