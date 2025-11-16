@@ -5,7 +5,7 @@
 }
 
 .head-name {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
 
 /* .section-head {
@@ -15,12 +15,20 @@
     background-repeat: no-repeat;
 } */
 
-.section-head .container-head {
+.section-head {
     display: flex;
     justify-content: center;
     align-items: center; 
     height: 100vh; 
-    margin-left: 650px;
+    width: 100vw;
+}
+.section-head .container-head {
+    display: inline-block;
+    /* width: 28vw;   
+    height: 40vh;   */
+    margin: auto;
+    position: relative;
+    text-align: center;
 }
 
 /* CSS for Terminal */
@@ -72,4 +80,25 @@
 }
 .terminal-shadow {
      box-shadow: 0px 0px 10px rgb(0, 0, 0)
+}
+
+.personal-links {
+    margin-top: 30px;
+    margin-left: 30px;
+}
+
+.personal-link {
+    margin-right: 20px;
+}
+
+/* .personal-link:hover {
+    fill: #ffffff;  
+} */
+.personal-link-icon {
+    width: 40px;
+    height: 40px;
+    transition: fill 0.3s ease; 
+}
+.personal-link-icon:hover {
+    fill: #ffffff;
 }
