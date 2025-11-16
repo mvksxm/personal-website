@@ -2,8 +2,7 @@ import { useState } from "react";
 import MissingSectionException from "../../exceptions/MissingSectionException";
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import "./Navbar.css";
-import cloud from '../../../images/cloud-icon.png'
-
+import images from "../../../public/exporter"
 
 
 interface NavbarProps {
@@ -53,9 +52,9 @@ const Navbar = ({isFormedNav}: NavbarProps) => {
     <>
       <nav className={`navbar fixed-top navbar-expand-lg ${isFormedNav ? "nav-appear" : ""}`} style={{textTransform: "uppercase", backgroundColor: "rgba(255, 255, 255, 0)"}}>
         <div className="container navbar-nav-container">
-          <img className="navbar-icon" src={cloud} style={{marginRight: "20px"}}></img>
+          <img className="navbar-icon" src={images["cloud-icon.png"]} style={{marginRight: "20px"}}></img>
           <a className="name-brand" onClick={() => setSections(resetAllActive())} href="#">Maksim Turtsevich</a>
-          <img className="navbar-icon" src={cloud} style={{marginLeft: "20px"}}></img>
+          <img className="navbar-icon" src={images["cloud-icon.png"]} style={{marginLeft: "20px"}}></img>
           <div className="collapse navbar-collapse navbar-nav-custom" id="navbarNav">
             <ul className="navbar-nav navbar-nav-ul">
               <li className="nav-item">
