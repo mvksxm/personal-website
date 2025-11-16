@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
-import "./styles/bg-image.css"
+import "./App.css"
 import Head from './components/Head/Head'
 import About from './components/About/About'
 
@@ -9,7 +9,7 @@ function App() {
 
   // Scrolling Event Listener
   window.addEventListener('scroll', () => {
-     if(window.scrollY <= 0) {
+     if(window.scrollY <= 0 && window.innerWidth > 800) {
       setFormedNav(false)
      } 
      else {
@@ -17,12 +17,21 @@ function App() {
      }
   })
 
+    // Resize Event Listener
+    window.addEventListener('resize', () => {
+      console.log(window.innerWidth)
+      if(window.innerWidth <= 800) {
+       setFormedNav(true)
+      } 
+   })
+ 
+
   return (
     <>
-      <div className="bg-image">
+      <section className="bg-image">
         <Navbar isFormedNav={isFormedNav} />
         <Head />
-      </div>
+      </section>
       <About />
       {/* <button style={{marginLeft:"auto"}} onClick={() => {
           if (!isFormedNav) {

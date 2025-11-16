@@ -1,0 +1,11 @@
+.bg-image {
+  background-image: url("../images/background-sky.jpg");
+  background-size: cover;  
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main-section {
+  height: 100vh;  
+  width: 100vw;
+}
