@@ -1,11 +1,39 @@
-.bg-image {
-  background-image: url("../images/background-sky.jpg");
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.cloud-bg-image{
+  background-image: url("/public/images/backgrounds/background-sky.jpg");
   background-size: cover;  
   background-position: center;
+  background-attachment: fixed;
   background-repeat: no-repeat;
 }
 
-.main-section {
-  height: 100vh;  
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  height: 100vh; 
   width: 100vw;
+}
+
+.shared-bg { 
+  background-size: cover;
+  background: 
+    /* url("/public/images/compositions/cloud-trans-left.png"), 
+    url("/public/images/compositions/cloud-trans-right.png"),  */
+    linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%);
+  /* background-attachment: fixed, fixed, fixed; */
+  background-attachment: fixed;
+  /* background-repeat: no-repeat, no-repeat, no-repeat; */
+  background-repeat: no-repeat;
+  /* background-position:
+    top 70px left -110px,
+    bottom right -75px,
+    right; */
+  /* background-size: 20vw, 15vw, 100vw; */
+  background-size: 100vw;
+  position: relative;
 }

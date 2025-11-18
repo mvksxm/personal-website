@@ -1,11 +1,18 @@
-import { useState } from 'react'
+import { useRef, useState, type RefObject } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import "./App.css"
 import Head from './components/Head/Head'
 import About from './components/About/About'
+import SectionBackground from './components/Sections/SectionBackground'
 
 function App() {
+
   const [isFormedNav, setFormedNav] = useState(false)
+
+  // Section references
+  var aboutSecRef = useRef(null)
+  var workSecRef = useRef(null)
+  var projectSecRef = useRef(null)
 
   // Scrolling Event Listener
   window.addEventListener('scroll', () => {
@@ -28,21 +35,15 @@ function App() {
 
   return (
     <>
-      <section className="bg-image">
+      <div className="cloud-bg-image">
         <Navbar isFormedNav={isFormedNav} />
         <Head />
-      </section>
-      <About />
-      {/* <button style={{marginLeft:"auto"}} onClick={() => {
-          if (!isFormedNav) {
-            setFormedNav(true)
-          } else {
-            setFormedNav(false)
-          }
-        }
-      }>
-        Test Button
-      </button> */}
+      </div>
+      <SectionBackground sectionRef={aboutSecRef}>
+          <section ref={aboutSecRef} id="about" className="section">
+            <About /> 
+          </section>
+      </SectionBackground>
     </>
   )
 }
