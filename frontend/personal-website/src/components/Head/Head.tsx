@@ -79,7 +79,7 @@ const HeadSection = () => {
 
     return (
         <>  
-            <section className="section-head">
+            <section id="home" className="section-head">
                 <div className="container-head">
                         <h4 className="head-text">Greetings! My name is</h4>
                         <h1 className="head-text head-name">Maksim Turtsevich</h1>

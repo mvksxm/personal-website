@@ -46,6 +46,7 @@
 
 .navbar-nav-ul .nav-link {
     color: rgb(255, 255, 255);
+    transition: text-shadow 0.5s ease;
 }
 
 .navbar-nav-ul .nav-link:hover {
