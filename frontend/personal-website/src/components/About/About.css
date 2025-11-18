@@ -2,10 +2,6 @@
     font-family:'Montserrat', sans-serif;
 }
 
-.section-about .container-about {
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    height: 100vh; 
-    margin-left: 200px;
+.container-about {
+
 }
