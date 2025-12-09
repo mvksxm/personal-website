@@ -1,14 +1,16 @@
 .nav-appear {
-    background-color: #6da2f1 !important;
     border: 2px solid #08224754 !important;
+    background-color: #6da2f1;
 }
 
-/* 8ad3e9 */
-/* #6da2f1 */
+.nav-info-color {
+    background-color: #5170fc;
+}
 
 .navbar {
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.5s ease;;
     border: 2px solid rgba(255, 255, 255, 0); 
+    text-transform: uppercase;
 }
 
 .navbar .container {
@@ -35,7 +37,7 @@
 
 .navbar-nav-ul .nav-item {
     margin-right: 20px;
-    font-family:'Montserrat', sans-serif;
+    font-family:'Montserrat', sans-serif !important;;
 }
 
 .navbar-nav-ul .nav-item:hover {
@@ -47,6 +49,7 @@
 .navbar-nav-ul .nav-link {
     color: rgb(255, 255, 255);
     transition: text-shadow 0.5s ease;
+    text-transform: uppercase;
 }
 
 .navbar-nav-ul .nav-link:hover {
