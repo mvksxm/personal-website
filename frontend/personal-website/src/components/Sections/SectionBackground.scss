@@ -5,10 +5,11 @@ $right-travel-distance: 235px;
 
 .shared-bg { 
     background-size: cover;
-    background: 
+    background: linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%);
+    // background-color: linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%);
+
       /* url("/public/images/compositions/cloud-trans-left.png"), 
       url("/public/images/compositions/cloud-trans-right.png"),  */
-      linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%);
     /* background-attachment: fixed, fixed, fixed; */
     background-attachment: fixed;
     /* background-repeat: no-repeat, no-repeat, no-repeat; */
@@ -18,7 +19,8 @@ $right-travel-distance: 235px;
       bottom right -75px,
       right; */
     /* background-size: 20vw, 15vw, 100vw; */
-    background-size: 100vw;
+    
+    // background-size: 100vw;
     position: relative;
   }
 
@@ -26,7 +28,7 @@ $right-travel-distance: 235px;
     position: absolute;
     filter: drop-shadow(0px 12px 28px rgba(0, 0, 0, 0.534)); /* shadow */
     pointer-events: none;
-
+    opacity: 0;
     // SCSS Vars
     $travel-distance: 200px;
 
@@ -46,23 +48,24 @@ $right-travel-distance: 235px;
     animation: var(--animation);
 
     // Left upper
-    &:nth-child(1) {
-      --top-distance: 70px;
+    &:nth-child(1){
+      --top-distance: 140px;
       // --left-distance: -300px; // final-distance: -110 px -290px 
       --left-distance: -400px;
       --width: 20vw;
     }
 
+
     // Left bottom
     &:nth-child(2) {
-      --bottom-distance: 0;
+      --bottom-distance: 60px;
       --left-distance: -380px; //final distance // -290 px constant
       --width: 15vw;
     }
 
     // Right upper
     &:nth-child(3) {
-      --top-distance: 70px;
+      --top-distance: 140px;
       --right-distance: -330px; // -95 px - 235 px constant
       // --right-distance: -95px;
       --width: 18vw;
@@ -70,10 +73,23 @@ $right-travel-distance: 235px;
 
     // Right bottom
     &:nth-child(4) {
-      --bottom-distance: 0;
+      --bottom-distance: 60px;
       --right-distance: -305px; // -70 px - 235 px constant
       --width: 13vw;
     }
+}
+
+.section-divider {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 4vh;
+  width: 50vw;
+}
+
+hr {
+  color: #ffffff;
+  margin: 0;
 }
 
 .rollout-animation-left {
@@ -83,8 +99,14 @@ $right-travel-distance: 235px;
 
 
   @keyframes from-left {
-    from { transform: translateX(0); }
-    to   { transform: translateX($left-travel-distance); }
+    from { 
+      transform: translateX(0);
+      opacity: 0; 
+    }
+    to  { 
+      transform: translateX($left-travel-distance); 
+      opacity: 1;
+    }
   }
 }
 
@@ -96,8 +118,14 @@ $right-travel-distance: 235px;
   animation-fill-mode: forwards;
 
   @keyframes from-right {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-$right-travel-distance); }
+    from { 
+      transform: translateX(0);
+      opacity: 0;  
+    }
+    to  { 
+      transform: translateX(-$right-travel-distance);
+      opacity: 1;   
+    }
   }
 }
 
@@ -108,8 +136,14 @@ $right-travel-distance: 235px;
   // animation-delay: 0.3s;
 
   @keyframes to-left {
-    from { transform: translateX($left-travel-distance); }
-    to   { transform: translateX(0); }
+    from { 
+      transform: translateX($left-travel-distance); 
+      opacity: 1;
+    }
+    to { 
+      transform: translateX(0);
+      opacity: 0; 
+    }
   }
 }
 
@@ -120,7 +154,19 @@ $right-travel-distance: 235px;
 
 
   @keyframes to-right {
-    from { transform: translateX(-$right-travel-distance); }
-    to   { transform: translateX(0); }
+    from { 
+      transform: translateX(-$right-travel-distance); 
+      opacity: 1;
+    }
+    to   { 
+      transform: translateX(0); 
+      opacity: 0;
+    }
+  }
+}
+
+@media (min-width: 4000px) {
+  .cloud {
+      width: auto;
   }
 }

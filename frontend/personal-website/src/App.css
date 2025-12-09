@@ -15,25 +15,31 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;     
-  height: 100vh; 
+  height: auto; 
+  min-height: 100dvh;
   width: 100vw;
+  overflow: hidden;
 }
 
-.shared-bg { 
-  background-size: cover;
-  background: 
+/* @media (max-width: 1800px) {
+  .section {
+    height: auto;
+  }
+} */
+
+  /* background-size: cover;
+  background-color: linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%); */
+ 
     /* url("/public/images/compositions/cloud-trans-left.png"), 
     url("/public/images/compositions/cloud-trans-right.png"),  */
-    linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%);
   /* background-attachment: fixed, fixed, fixed; */
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   /* background-repeat: no-repeat, no-repeat, no-repeat; */
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   /* background-position:
     top 70px left -110px,
     bottom right -75px,
     right; */
   /* background-size: 20vw, 15vw, 100vw; */
-  background-size: 100vw;
-  position: relative;
-}
+  /* background-size: 100vw;
+  position: relative; */
