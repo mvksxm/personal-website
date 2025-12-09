@@ -1,6 +1,5 @@
 import "./Head.css"
 import { useEffect, useState } from "react"
-import images from "../../../public/exporter"
 
 const HeadSection = () => {
 
