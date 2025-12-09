@@ -3,11 +3,12 @@ import images from "../../../public/exporter"
 import { useEffect, useRef, type ReactNode, type RefObject } from 'react'; 
 
 interface Props { 
-    sectionRef: RefObject<Element | null>;  
+    sectionRef: RefObject<Element | null>;
+    sectionName: string,  
     children: ReactNode;
 }
 
-const SectionBackground = ({sectionRef, children}: Props) => {
+const SectionBackground = ({sectionRef, sectionName, children}: Props) => {
     
     const isRecentlyObservedRef = useRef(false);
 
@@ -68,18 +69,23 @@ const SectionBackground = ({sectionRef, children}: Props) => {
 
     useEffect(() => {  
             var allImages = document.querySelectorAll("img")
-            var filteredImages = Array.from(allImages).filter(img => img.id.startsWith("cloud-"))
+            var filteredImages = Array.from(allImages).filter(
+                img => img.id.startsWith("cloud-animated") 
+                       && img.id.endsWith(sectionName) 
+            )
             sectionListen(filteredImages)
         }, []
     )
 
     return (
         <div className="shared-bg">
-            <img id="cloud-left-top" src={images["cloud-trans-left.png"]} className="cloud"></img>
-            <img id="cloud-left-bottom" src={images["cloud-trans-left.png"]} className="cloud"></img>
-            <img id="cloud-right-top" src={images["cloud-trans-right.png"]} className="cloud"></img>
-            <img id="cloud-right-bottom"src={images["cloud-trans-right.png"]} className="cloud"></img>
+            <img id={`cloud-animated-left-top-${sectionName}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
+            <img id={`cloud-animated-left-bottom-${sectionName}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
+            <img id={`cloud-animated-right-top-${sectionName}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
+            <img id={`cloud-animated-right-bottom-${sectionName}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
+            <img id="section-divider" src={images["section-divider-cropped.svg"]} className="section-divider"></img>
             {children}
+            <hr />
         </div>
     )
 }

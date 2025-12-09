@@ -4,6 +4,7 @@ import "./App.css"
 import Head from './components/Head/Head'
 import About from './components/About/About'
 import SectionBackground from './components/Sections/SectionBackground'
+import Work from './components/Work/Work'
 
 function App() {
 
@@ -25,12 +26,12 @@ function App() {
   })
 
     // Resize Event Listener
-    window.addEventListener('resize', () => {
-      console.log(window.innerWidth)
-      if(window.innerWidth <= 800) {
-       setFormedNav(true)
-      } 
-   })
+  window.addEventListener('resize', () => {
+    console.log(window.innerWidth)
+    if(window.innerWidth <= 800) {
+      setFormedNav(true)
+    } 
+  })
  
 
   return (
@@ -39,9 +40,14 @@ function App() {
         <Navbar isFormedNav={isFormedNav} />
         <Head />
       </div>
-      <SectionBackground sectionRef={aboutSecRef}>
+      <SectionBackground sectionRef={aboutSecRef} sectionName="about">
           <section ref={aboutSecRef} id="about" className="section">
-            <About /> 
+            <About />
+          </section>
+      </SectionBackground>
+      <SectionBackground sectionRef={workSecRef} sectionName="work">
+          <section ref={workSecRef} className="section">
+            <Work />
           </section>
       </SectionBackground>
     </>
