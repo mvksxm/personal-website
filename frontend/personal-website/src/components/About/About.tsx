@@ -12,7 +12,7 @@ const About = () => {
             "Bash",
             "SQL",
             "C#",
-            "JavaScript",
+            "JS",
             "Java"
         ],
         "Tools & Frameworks": [
