@@ -11,16 +11,6 @@ html {
   background-repeat: no-repeat;
 }
 
-.section {
-  display: flex;
-  justify-content: center;
-  align-items: center;     
-  height: auto; 
-  min-height: 100dvh;
-  width: 100vw;
-  overflow: hidden;
-}
-
 /* @media (max-width: 1800px) {
   .section {
     height: auto;

@@ -49,7 +49,7 @@ $right-travel-distance: 235px;
 
     // Left upper
     &:nth-child(1){
-      --top-distance: 140px;
+      --top-distance: 130px;
       // --left-distance: -300px; // final-distance: -110 px -290px 
       --left-distance: -400px;
       --width: 20vw;
@@ -58,14 +58,14 @@ $right-travel-distance: 235px;
 
     // Left bottom
     &:nth-child(2) {
-      --bottom-distance: 60px;
+      --bottom-distance: 70px;
       --left-distance: -380px; //final distance // -290 px constant
       --width: 15vw;
     }
 
     // Right upper
     &:nth-child(3) {
-      --top-distance: 140px;
+      --top-distance: 130px;
       --right-distance: -330px; // -95 px - 235 px constant
       // --right-distance: -95px;
       --width: 18vw;
@@ -73,7 +73,7 @@ $right-travel-distance: 235px;
 
     // Right bottom
     &:nth-child(4) {
-      --bottom-distance: 60px;
+      --bottom-distance: 70px;
       --right-distance: -305px; // -70 px - 235 px constant
       --width: 13vw;
     }
@@ -85,6 +85,16 @@ $right-travel-distance: 235px;
   margin-right: auto;
   padding-top: 4vh;
   width: 50vw;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  height: auto; 
+  min-height: 100dvh;
+  width: 100vw;
+  overflow: hidden;
 }
 
 hr {

@@ -3,17 +3,12 @@ import Navbar from './components/Navbar/Navbar'
 import "./App.css"
 import Head from './components/Head/Head'
 import About from './components/About/About'
-import SectionBackground from './components/Sections/SectionBackground'
+import SectionWrapper from './components/Sections/SectionWrapper'
 import Work from './components/Work/Work'
 
 function App() {
 
   const [isFormedNav, setFormedNav] = useState(false)
-
-  // Section references
-  var aboutSecRef = useRef(null)
-  var workSecRef = useRef(null)
-  var projectSecRef = useRef(null)
 
   // Scrolling Event Listener
   window.addEventListener('scroll', () => {
@@ -40,16 +35,12 @@ function App() {
         <Navbar isFormedNav={isFormedNav} />
         <Head />
       </div>
-      <SectionBackground sectionRef={aboutSecRef} sectionName="about">
-          <section ref={aboutSecRef} id="about" className="section">
-            <About />
-          </section>
-      </SectionBackground>
-      <SectionBackground sectionRef={workSecRef} sectionName="work">
-          <section ref={workSecRef} className="section">
-            <Work />
-          </section>
-      </SectionBackground>
+      <SectionWrapper sectionId="about">
+        <About />
+      </SectionWrapper>
+      <SectionWrapper sectionId="work">
+        <Work />
+      </SectionWrapper>
     </>
   )
 }

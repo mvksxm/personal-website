@@ -1,14 +1,13 @@
-import "./SectionBackground.scss"
+import "./SectionWrapper.scss"
 import images from "../../../public/exporter"
-import { useEffect, useRef, type ReactNode, type RefObject } from 'react'; 
+import { useEffect, useRef, type ReactNode } from 'react'; 
 
 interface Props { 
-    sectionRef: RefObject<Element | null>;
-    sectionName: string,  
+    sectionId: string,  
     children: ReactNode;
 }
 
-const SectionBackground = ({sectionRef, sectionName, children}: Props) => {
+const SectionWrapper = ({sectionId, children}: Props) => {
     
     const isRecentlyObservedRef = useRef(false);
 
@@ -37,6 +36,7 @@ const SectionBackground = ({sectionRef, sectionName, children}: Props) => {
 
     const sectionListen = (filteredImages: Array<HTMLImageElement>) => {
         
+        let monitoredSection = document.getElementById(sectionId)
         const observer = new IntersectionObserver(
             (sections) => {
                 sections.forEach(section => {
@@ -61,17 +61,18 @@ const SectionBackground = ({sectionRef, sectionName, children}: Props) => {
             }
         )
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current)
+        if (monitoredSection) {
+            observer.observe(monitoredSection)
+        } else {
+            throw Error(`Section with the following id - ${sectionId} does not exist!`)
         }
     }
-
 
     useEffect(() => {  
             var allImages = document.querySelectorAll("img")
             var filteredImages = Array.from(allImages).filter(
                 img => img.id.startsWith("cloud-animated") 
-                       && img.id.endsWith(sectionName) 
+                       && img.id.endsWith(sectionId) 
             )
             sectionListen(filteredImages)
         }, []
@@ -79,17 +80,19 @@ const SectionBackground = ({sectionRef, sectionName, children}: Props) => {
 
     return (
         <div className="shared-bg">
-            <img id={`cloud-animated-left-top-${sectionName}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
-            <img id={`cloud-animated-left-bottom-${sectionName}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
-            <img id={`cloud-animated-right-top-${sectionName}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
-            <img id={`cloud-animated-right-bottom-${sectionName}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
-            <img id="section-divider" src={images["section-divider-cropped.svg"]} className="section-divider"></img>
-            {children}
+            <img id={`cloud-animated-left-top-${sectionId}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
+            <img id={`cloud-animated-left-bottom-${sectionId}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
+            <img id={`cloud-animated-right-top-${sectionId}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
+            <img id={`cloud-animated-right-bottom-${sectionId}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
+            <img id={`section-divider-${sectionId}`} src={images["section-divider-cropped.svg"]} className="section-divider"></img>
+            <section id={sectionId} className="section">
+                {children}
+            </section>
             <hr />
         </div>
     )
 }
 
 
-export default SectionBackground;
+export default SectionWrapper;
  
