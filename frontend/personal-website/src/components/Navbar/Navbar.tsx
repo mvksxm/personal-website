@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import "./Navbar.css";
 import images from "../../../public/exporter"
@@ -11,55 +11,106 @@ interface NavbarProps {
 const Navbar = ({isFormedNav}: NavbarProps) => {
   
   const [section, setActiveSection] = useState("")
-  const [observerThreshold, setThreshold] = useState(0.5)
-  const [isInfoColor, setInfoColor] = useState(false)
+  const interThreshold = useRef(0.5)
+  // const recolorThreshold = useRef(0.75)
+  const [isInfoColor, changeInfoColor] = useState(false)
 
   const resizeCallback = () => {
     var devicePixelRatio = window.devicePixelRatio
+    // console.log("Recolor threshold ", recolorThreshold)
+
+    // if (devicePixelRatio >= 1.5) {
+    //   // setRecolorThreshold(0.1)
+    //   recolorThreshold.current = 0.1
+    // }
+
+    // if (devicePixelRatio < 1.5) {
+    //   console.log("settting")
+    //   recolorThreshold.current = 0.75
+    // }
+
     if (devicePixelRatio > 1) {
       var threshold = Utils.floorFractionalNumber(0.5 / Utils.floorFractionalNumber(devicePixelRatio, 2), 1)
-      setThreshold(threshold)
-    } else {
-      setThreshold(0.5)
+      interThreshold.current = threshold
     }
+
+    if (devicePixelRatio <= 1) {
+      interThreshold.current = 0.5
+    }
+
+  }
+
+  const sectionLightCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        console.log("Section intersection!")
+        setActiveSection(entry.target.id)
+      }
+    })
+  }
+
+  const navColorCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach(
+      (entry) => {
+        console.log(entry.target.id)
+        if(entry.isIntersecting && entry.target.id != "home") { 
+          console.log("id true:", entry.target.id)
+          changeInfoColor(true)
+        }
+        if(entry.isIntersecting && entry.target.id === "home") {
+          console.log("id false:", entry.target.id)
+          changeInfoColor(false)
+        }
+      }
+    )
   }
   
   useEffect(
     () => {
 
-      window.addEventListener('resize', resizeCallback)
-      
-      var sections = document.querySelectorAll("section")
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              console.log("Section intersection!")
-              setActiveSection(entry.target.id)
-            }
-            
-            if(entry.isIntersecting && entry.target.id != "home" && !isInfoColor) {
-              setInfoColor(true)
-            }
+      let sectionFleshObserver: IntersectionObserver
+      let navChangeObserver: IntersectionObserver
 
-            if(entry.isIntersecting && entry.target.id === "home" && isInfoColor) {
-              setInfoColor(false)
+      const createObservers = () => {
+        var sections = document.querySelectorAll("section")
+
+        sectionFleshObserver?.disconnect()
+        sectionFleshObserver = new IntersectionObserver(
+            sectionLightCallback,
+            {
+              threshold: interThreshold.current
             }
+        )
+        
+        navChangeObserver?.disconnect()
+        navChangeObserver = new IntersectionObserver(
+          navColorCallback,
+          {
+            threshold: interThreshold.current
+          }
+        )
 
-          })
-        },
-        {
-          threshold: observerThreshold
-        }
-      )
-      sections.forEach(section => observer.observe(section))
+        sections.forEach((section) => {
+          sectionFleshObserver.observe(section)
+          navChangeObserver.observe(section)
+        })
+      }
 
-      // TODO: Think about implementing an additional observer with another threshold for the color change of the Navbar.
+
+      const resizeLogic = () => {
+        resizeCallback()
+        createObservers()
+      }
+
+      resizeLogic()
+      window.addEventListener('resize', resizeLogic)
 
       return () => {
         window.removeEventListener('resize', resizeCallback);
+        sectionFleshObserver?.disconnect();
+        navChangeObserver?.disconnect();
       }
-    }, [observerThreshold, isInfoColor]
+    }, []
   )
 
   const setSection = (sectionId: string, navbarId: string = "navbar") => {

@@ -8,7 +8,7 @@
 }
 
 .navbar {
-    transition: border-color 0.3s ease, background-color 0.5s ease;;
+    transition: border-color 0.3s ease, background-color 0.5s ease;
     border: 2px solid rgba(255, 255, 255, 0); 
     text-transform: uppercase;
 }
