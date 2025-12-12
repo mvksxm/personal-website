@@ -10,6 +10,7 @@ variable "work_experience" {
   type = set(
     object({
       companyName = map(string),
+      position    = map(string)
       dateStart   = map(string),
       dateEnd     = map(string),
       location    = map(string),

@@ -4,6 +4,7 @@ firestore_location = "nam5"
 work_experience = [
   {
     "companyName" : { "stringValue" : "Sunwing" },
+    "position" : { "stringValue" : "Software Engineer" },
     "dateStart" : { "stringValue" : "2024-09-16" },
     "dateEnd" : { "stringValue" : "Current" },
     "location" : { "stringValue" : "Toronto, ON" },
@@ -27,6 +28,7 @@ work_experience = [
   },
   {
     "companyName" : { "stringValue" : "Procter & Gamble" },
+    "position" : { "stringValue" : "Software Engineer" },
     "dateStart" : { "stringValue" : "2023-05-01" },
     "dateEnd" : { "stringValue" : "2024-09-13" },
     "location" : { "stringValue" : "Warsaw, Poland" },
@@ -57,6 +59,7 @@ work_experience = [
   },
   {
     "companyName" : { "stringValue" : "DXC Technology" },
+    "position" : { "stringValue" : "Data Engineer" }
     "dateStart" : { "stringValue" : "2023-01-16" },
     "dateEnd" : { "stringValue" : "2023-05-01" },
     "location" : { "stringValue" : "Warsaw, Poland" },
@@ -81,6 +84,7 @@ work_experience = [
   },
   {
     "companyName" : { "stringValue" : "Devoteam G Cloud" },
+    "position" : { "stringValue" : "Cloud Support Engineer" },
     "dateStart" : { "stringValue" : "2022-05-01" },
     "dateEnd" : { "stringValue" : "2023-01-16" },
     "location" : { "stringValue" : "Warsaw, Poland" },
@@ -99,6 +103,33 @@ work_experience = [
           { "stringValue" : "Initiated and developed a solution on top of the Google's open source project - 'gcpdiag', that was automatically comparing clients' infrastructure deployed in the GCP against the most common bad practices that could cause major issues. Results were automatically returned to the Support Engineer assigned to the ticket, which significantly assisted him with the further resolvement of the issue occured." },
           { "stringValue" : "Developed GCP Cloud Functions for automation of the manual routine tasks that were constantly performed in the Support Department." },
           { "stringValue" : "Served as a first line Support Engineer for the Clients with the Google Cloud based Infrastructure" },
+        ]
+      }
+    }
+  },
+  {
+    "companyName" : { "stringValue" : "Abbott" },
+    "position" : { "stringValue" : "Intern DevOps/Data Engineer" },
+    "dateStart" : { "stringValue" : "2021-12-01" },
+    "dateEnd" : { "stringValue" : "2022-05-01" },
+    "location" : { "stringValue" : "Warsaw, Poland" },
+    "logoUrl" : { "stringValue" : "https://upload.wikimedia.org/wikipedia/commons/a/a4/Abbott_Laboratories_logo.svg" },
+    "technologies" : {
+      "arrayValue" : {
+        "values" : [
+          { "stringValue" : "Python" },
+          { "stringValue" : "AWS" },
+          { "stringValue" : "Terraform" },
+          { "stringValue" : "Apache Spark" }
+      ] }
+    },
+    "jobResponsibilities" : {
+      "arrayValue" : {
+        "values" : [
+          { "stringValue" : "Supported Abbott's internal Big-Data/AI AWS-based platform. Specifically, was responsible for debugging issues related to infrastructure provisioning, deployment and exploitation." },
+          { "stringValue" : "Contributed to the data processing AWS Lambda functions and Apache Spark based ETL Glue Jobs" },
+          { "stringValue" : "Developed AWS CloudFormation templates and Terraform configuration files for the AWS resources that were later utilized by the members of a Data Science team." },
+          { "stringValue" : "Developed and integrated a custom Bash script into CodePipeline workflow, which was responsible for automated build and deployment of the AWS Cloud Functions across the Abbott's AWS environment." },
         ]
       }
     }
