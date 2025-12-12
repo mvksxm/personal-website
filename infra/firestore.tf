@@ -1,7 +1,7 @@
 
 locals {
   work_experience_map = {
-    for _, o in var.work_experience : lower(replace(replace(o["companyName"], "/&/", ""), "/\\s+/", "-")) => o
+    for _, o in var.work_experience : lower(replace(replace(o["companyName"]["stringValue"], "/&/", ""), "/\\s+/", "-")) => o
   }
 }
 
