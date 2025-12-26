@@ -1,0 +1,55 @@
+
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 75vh;
+}
+
+.central-frame {
+    /* margin-left: 20vw; */
+    /* position: absolute; */
+    z-index: 10;
+}
+
+.right-frame-blurred {
+    position: absolute;
+    margin-left: 30vw;
+    scale: 0.5;
+    opacity: 0.5;
+}
+
+.left-frame-blurred {
+    position: absolute;
+    margin-right: 30vw;
+    scale: 0.5;
+    opacity: 0.5;
+}
+
+.carousel-arrow {
+    width: 8%;
+    transition: filter 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    filter: drop-shadow(0 0 6px #5fa8ff) 
+            drop-shadow(0 0 12px #5fa8ff);
+}
+
+.arrow-left {
+    margin-right: 5vw;
+}
+
+.arrow-right {
+    margin-left: 5vw;
+    transform: scaleX(-1);
+}
+
+.hidden-element {
+    visibility: hidden;
+}
+
+.disappeared-element {
+    display: none;
+}
