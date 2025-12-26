@@ -65,45 +65,55 @@ const ApplyCollectionType = (documentData: DocumentSnapshot | Array<DocumentSnap
 
 
 ff.http("PersonalFunction", async (req, res) => {
-    try {
-      let rawRequest = req.rawBody?.toString(); 
-    
-      if (!rawRequest) {
-        throw new Error("Request's body is empty!")
-      }
+
+  res.set("Access-Control-Allow-Origin", "*")
+  res.set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
   
-      let deserializedReq = ObjectDeserialize<FunctionRequest>(rawRequest, FunctionRequestSchema);
-           
-      // if (!deserializedReq.collectionName) {
-      //   throw new Error("Obligatory parameter - 'collectionName' is empty!")
-      // }  
-      
-      if (!deserializedReq.isList && !deserializedReq?.documentId) {
-        throw new Error("If 'isList' parameters is - 'False', then 'documentId' must be supplied!")
-      } 
-      
-      let functionResponse: object[];
-      if (!deserializedReq.isList && deserializedReq.documentId) {
-        let documentSnap = await rep.GetDocumentById(deserializedReq.collectionName, deserializedReq.documentId)
-        functionResponse = ApplyCollectionType(documentSnap, deserializedReq.collectionName)
-      } else {
-        let documentSnaps = await rep.ListCollectionDocuments(deserializedReq.collectionName)
-        functionResponse = ApplyCollectionType(documentSnaps, deserializedReq.collectionName)
-      }
-      
-      res.send(functionResponse)
-    } 
-    catch (error) {
-      console.log("Error occured during an execution of the function!")
-      
-      if (error instanceof Error) {
-        console.log(error.message)
-      }
-      
-      throw error;
+  if (req.method === "OPTIONS") {
+    res.status(204).send('');
+    return
+  }
+
+  try {
+
+    let rawRequest = req.rawBody?.toString(); 
+  
+    if (!rawRequest) {
+      throw new Error("Request's body is empty!")
     }
 
+    let deserializedReq = ObjectDeserialize<FunctionRequest>(rawRequest, FunctionRequestSchema);
+          
+    // if (!deserializedReq.collectionName) {
+    //   throw new Error("Obligatory parameter - 'collectionName' is empty!")
+    // }  
+    
+    if (!deserializedReq.isList && !deserializedReq?.documentId) {
+      throw new Error("If 'isList' parameters is - 'False', then 'documentId' must be supplied!")
+    } 
+    
+    let functionResponse: object[];
+    if (!deserializedReq.isList && deserializedReq.documentId) {
+      let documentSnap = await rep.GetDocumentById(deserializedReq.collectionName, deserializedReq.documentId)
+      functionResponse = ApplyCollectionType(documentSnap, deserializedReq.collectionName)
+    } else {
+      let documentSnaps = await rep.ListCollectionDocuments(deserializedReq.collectionName)
+      functionResponse = ApplyCollectionType(documentSnaps, deserializedReq.collectionName)
+    }
+
+    res.send(functionResponse)
+  } 
+  catch (error) {
+    console.log("Error occured during an execution of the function!")
+    
+    var err = error as Error;
+    console.log(err.message)
+    
+    // throw error;
+    res.status(400).send({"Error": err.message})
   }
+
+}
 )
 
 
