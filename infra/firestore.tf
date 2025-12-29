@@ -1,8 +1,8 @@
 locals {
   work_experience_map = {
-    for _, o in var.work_experience:
-      base64encode(o["companyName"]["stringValue"]) => merge(o, {"id":{"stringValue": base64encode(o["companyName"]["stringValue"])}})
-      # lower(replace(replace(o["companyName"]["stringValue"], "/&/", ""), "/\\s+/", "-")) => o
+    for _, o in var.work_experience :
+    base64encode(o["companyName"]["stringValue"]) => merge(o, { "id" : { "stringValue" : base64encode(o["companyName"]["stringValue"]) } })
+    # lower(replace(replace(o["companyName"]["stringValue"], "/&/", ""), "/\\s+/", "-")) => o
   }
 }
 
