@@ -23,10 +23,10 @@
 /* CSS for the Brand on the Navbar */
 .navbar .container .name-brand {
     font-family:'Montserrat', sans-serif;
-    font-size: 18px;
     text-decoration: none;
     color: rgb(255, 255, 255) !important; 
     padding-top: 2px;
+    /* margin-left: -45vw; */
 }
 
 
@@ -70,4 +70,18 @@
 .navbar-icon {
     height: auto;
     width: 40px;
+}
+
+.nav-burger {
+    width: 25px;
+    border: none;
+    background: none;
+}
+
+.navbar-toggler {
+    border: none;
+}
+  
+.navbar-toggler:focus {
+    box-shadow: none;
 }

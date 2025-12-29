@@ -1,4 +1,4 @@
-import { useRef, useState, type RefObject } from 'react'
+import { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import "./App.css"
 import Head from './components/Head/Head'
@@ -30,7 +30,7 @@ function App() {
  
 
   return (
-    <>
+    <div className="main-body">
       <div className="cloud-bg-image">
         <Navbar isFormedNav={isFormedNav} />
         <Head />
@@ -41,7 +41,7 @@ function App() {
       <SectionWrapper sectionId="work">
         <Work />
       </SectionWrapper>
-    </>
+    </div>
   )
 }
 

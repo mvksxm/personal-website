@@ -39,7 +39,7 @@ const skillsPerKey = (skillsMap: Map<string, Array<string>>) => {
                     <div className="skills-box">
                         <div className="skills-row">
                             <img className="terminal-pic" src={images["terminal.svg"]}></img>
-                            <h4 className="skills-header">{key}</h4>
+                            <div className="skills-header"><b>{key}</b></div>
                         </div>
                         {arrangeSkills(skillsMap.get(key) ?? [])}
                     </div>

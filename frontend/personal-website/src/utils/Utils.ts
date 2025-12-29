@@ -7,7 +7,7 @@ class Utils {
             return num
         }
 
-        var decimals = amountDecimals * 10
+        var decimals = 10**amountDecimals
         return Math.floor(num * decimals) / decimals
     }
 }

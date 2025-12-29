@@ -41,13 +41,13 @@ const SectionWrapper = ({sectionId, children}: Props) => {
             (sections) => {
                 sections.forEach(section => {
 
-                    if (section.intersectionRatio >= 0.5 && section.isIntersecting) {
+                    if (section.intersectionRatio >= 0.3 && section.isIntersecting) {
                         isRecentlyObservedRef.current = true;
                         animateImages(filteredImages)
                     }
 
 
-                    if (section.intersectionRatio < 0.5  && isRecentlyObservedRef.current ) {
+                    if (section.intersectionRatio < 0.3 && isRecentlyObservedRef.current ) {
                         console.log("No advance intersection")
                         isRecentlyObservedRef.current = false; 
                         animateImages(filteredImages, true)
@@ -57,7 +57,7 @@ const SectionWrapper = ({sectionId, children}: Props) => {
 
             },
             {
-                threshold: 0.5
+                threshold: 0.3
             }
         )
 

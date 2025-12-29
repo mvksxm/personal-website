@@ -24,6 +24,7 @@
     width: 30%;
     border-style:solid;
     border-radius: 5px;
+    border-width: thin;
     border-color: rgb(223, 222, 222);
     text-align: center;
     margin-left: 0.25em;
@@ -38,7 +39,7 @@
 }
 
 .terminal-pic {
-    width: 35px;
+    width: 25px;
 }
 
 .skills-header {

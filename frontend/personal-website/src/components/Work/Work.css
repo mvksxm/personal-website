@@ -6,8 +6,9 @@
 }
 
 .work-header {
-    text-align: center;  
-    margin-top: 5%;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .work-content {
@@ -20,8 +21,7 @@
 .work-frame {
     min-width: 50vw;
     min-height: 50vh;
-    max-width:70%;
-    /* background-color: transparent; */
+    width: 85vw;
     background-color: #5170fc;
     border: 2px solid white;
     border-radius: 10px;
@@ -50,7 +50,7 @@
 }
 
 .work-frame-icon {
-    width: 1.5vw;
+    width: 25px;
 }
 
 .work-frame-body {
@@ -73,9 +73,8 @@
     justify-content: center;
     /* min-width: 10%; */
     /* max-width: 30%; */
-    border-style:solid;
+    border: 1px solid white;
     border-radius: 5px;
-    border-color: rgb(223, 222, 222);
     margin-left: 0.5vh;
     margin-right: 0.5vh;  
     margin-top: 0.5vh;
@@ -91,7 +90,7 @@
 }
 
 @media (max-width: 500px) {
-    .tech-item {
-        font-size: 8px;
+    .work-frame {
+        font-size: 0.7em;
     }
 }

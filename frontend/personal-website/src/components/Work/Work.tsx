@@ -146,7 +146,7 @@ const generateWorkFrames = (elements: WorkExperienceType[]): React.ReactElement<
                 <div className="work-frame-header">
                     <img className="work-frame-img" src={elem["logoUrl"]}></img>
                     <div>
-                        <h4>{elem.companyName}</h4>
+                        <div><b>{elem.companyName}</b></div>
                         <div>{elem.position}</div>
                     </div>
                     
@@ -160,11 +160,11 @@ const generateWorkFrames = (elements: WorkExperienceType[]): React.ReactElement<
                 <div style={{display: "flex", marginTop: "1%"}}>
                     <div className="work-frame-location-date">
                         <img className="work-frame-icon" src={images["location.svg"]}></img>
-                        <div>{elem.location}</div>
+                        <div style={{marginLeft:"0.2vw"}}>{elem.location}</div>
                     </div>
-                    <div className="work-frame-location-date">
+                    <div className="work-frame-location-date" style={{width: "50%"}}>
                         <img className="work-frame-icon" src={images["calendar.svg"]}></img>
-                        <div style={{marginLeft:"5%", whiteSpace:"nowrap"}}>{dtf.format(new Date(elem.dateStart))} - {elem.dateEnd === "Current" ? "Current" : dtf.format(new Date(elem.dateEnd))}</div>
+                        <div style={{marginLeft:"0.5vw"}}>{dtf.format(new Date(elem.dateStart))} - {elem.dateEnd === "Current" ? "Current" : dtf.format(new Date(elem.dateEnd))}</div>
                     </div>
                 </div>
 
