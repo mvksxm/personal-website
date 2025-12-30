@@ -1,0 +1,20 @@
+{
+  "name": "personal-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "npm run build && functions-framework --target=PersonalFunction",
+    "archive": "npm run build && zip -r archive/function.zip *.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@google-cloud/firestore": "^8.0.0",
+    "@google-cloud/functions-framework": "^4.0.0",
+    "dotenv": "^17.2.3",
+    "firebase": "^12.6.0",
+    "zod": "^4.1.13"
+  }
+}

@@ -1,4 +1,4 @@
-import { CollectionReference, DocumentData, DocumentSnapshot, Firestore, FirestoreDataConverter } from "@google-cloud/firestore";
+import { CollectionReference, DocumentSnapshot, Firestore } from "@google-cloud/firestore";
 
 
 class Repository {
