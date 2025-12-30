@@ -204,8 +204,11 @@ const Navbar = ({isFormedNav}: NavbarProps) => {
                 <button className={`nav-link ${section === "work" ? "active-selection" : ""}`} onClick={() => {setSection("work"); closeNavbar()}}>Work</button>
               </li>
               <li className="nav-item">
-                <button className={`nav-link ${section === "projects" ? "active-selection" : ""}`} onClick={() => {setSection("projects"); closeNavbar()}}>Projects</button>
+                <a className="nav-link" href="#">Resume</a>
               </li>
+              {/* <li className="nav-item">
+                <button className={`nav-link ${section === "projects" ? "active-selection" : ""}`} onClick={() => {setSection("projects"); closeNavbar()}}>Projects</button>
+              </li> */}
             </ul>
           </div>
         </div>

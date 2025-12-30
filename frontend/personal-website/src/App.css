@@ -13,11 +13,22 @@ html {
   background-repeat: no-repeat;
 }
 
-/* @media (max-width: 1800px) {
-  .section {
-    height: auto;
+footer {
+  width: 100vw;
+  min-height: 8vw;
+  background: linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%);
+  display: flex;
+  align-items : center;
+  justify-content: center;
+  font-family:'JetBrains Mono';
+  text-align: center;
+  font-size: 1vw;
+}
+@media (max-width: 500px) {
+  footer {
+    font-size: 2vw;
   }
-} */
+}
 
   /* background-size: cover;
   background-color: linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%); */

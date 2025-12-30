@@ -41,6 +41,9 @@ function App() {
       <SectionWrapper sectionId="work">
         <Work />
       </SectionWrapper>
+      <footer>
+        <div style={{color: "white"}}>© Copyright | Maksim Turtsevich 2025 All Rights Reserved</div>
+      </footer>
     </div>
   )
 }
