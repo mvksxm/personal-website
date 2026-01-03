@@ -2,8 +2,14 @@ variable "project_id" {
   type = string
 }
 
+variable "region" {
+  type    = string
+  default = "us-central1"
+}
+
 variable "firestore_location" {
-  type = string
+  type    = string
+  default = "nam5"
 }
 
 variable "work_experience" {
@@ -27,4 +33,31 @@ variable "work_experience" {
       })
     })
   )
+}
+
+variable "function_env_vars" {
+  type    = map(string)
+  default = {}
+}
+
+variable "function_roles" {
+  type    = set(string)
+  default = []
+}
+
+variable "vercel_team" {
+  type    = string
+  default = "maxs-projects-09304feb"
+}
+
+variable "vercel_project" {
+  type    = string
+  default = "personal-website"
+}
+
+variable "vercel_envs" {
+  type = set(string)
+  default = [
+    "production"
+  ]
 }

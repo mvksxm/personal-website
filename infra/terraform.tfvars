@@ -1,6 +1,21 @@
 project_id         = "marine-catfish-310009"
+region             = "us-central1"
 firestore_location = "nam5"
 
+# Function Specific Variables
+function_roles = [
+  "roles/datastore.viewer"
+]
+
+# Vercel OIDC Specific Variables
+vercel_team    = "maxs-projects-09304feb"
+vercel_project = "personal-website"
+vercel_envs = [
+  "development",
+  "production"
+]
+
+# Data definitions
 work_experience = [
   {
     "companyName" : { "stringValue" : "Sunwing" },
@@ -141,4 +156,4 @@ work_experience = [
       }
     }
   }
-] 
+]
