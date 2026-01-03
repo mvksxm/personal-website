@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "gcp-build":"",
     "build": "tsc",
     "dev": "npm run build && functions-framework --target=PersonalFunction",
-    "archive": "npm run build && zip -r archive/function.zip *.js"
+    "archive": "npm run build && zip -r archive/function.zip *.js package.json"
   },
   "author": "",
   "license": "ISC",

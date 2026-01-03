@@ -3,10 +3,11 @@ import * as ff from "@google-cloud/functions-framework";
 import { FunctionRequest, FunctionRequestSchema, WorkExperienceSchema, WorkExperienceType } from "./models";
 import { DeserializeArray, ObjectDeserialize } from "./deserializers";
 import { DocumentSnapshot } from "@google-cloud/firestore";
+import *  as z from "zod"; 
 
 // Global Vars
-const PROJECT_ID: string = process.env["project_id"] ? process.env["project_id"] : "marine-catfish-310009";
-const DATABASE_ID: string = process.env["database_id"] ? process.env["database_id"] : "personal-database"
+const PROJECT_ID: string = process.env["PROJECT_ID"] ? process.env["PROJECT_ID"] : "marine-catfish-310009";
+const DATABASE_ID: string = process.env["DATABASE_ID"] ? process.env["DATABASE_ID"] : "personal-database"
 const SUPPORTED_COLLECTIONS = [
   "workExperience",
   "personalProjects"
@@ -74,6 +75,11 @@ ff.http("PersonalFunction", async (req, res) => {
     return
   }
 
+  if (req.method !== "POST") {
+    res.status(400).send("Only 'POST' requests are allowed!")
+    return
+  }
+
   try {
 
     let rawRequest = req.rawBody?.toString(); 
@@ -84,10 +90,6 @@ ff.http("PersonalFunction", async (req, res) => {
 
     let deserializedReq = ObjectDeserialize<FunctionRequest>(rawRequest, FunctionRequestSchema);
           
-    // if (!deserializedReq.collectionName) {
-    //   throw new Error("Obligatory parameter - 'collectionName' is empty!")
-    // }  
-    
     if (!deserializedReq.isList && !deserializedReq?.documentId) {
       throw new Error("If 'isList' parameters is - 'False', then 'documentId' must be supplied!")
     } 
@@ -101,16 +103,23 @@ ff.http("PersonalFunction", async (req, res) => {
       functionResponse = ApplyCollectionType(documentSnaps, deserializedReq.collectionName)
     }
 
-    res.send(functionResponse)
+    res.status(200).send(functionResponse)
   } 
   catch (error) {
     console.log("Error occured during an execution of the function!")
     
-    var err = error as Error;
-    console.log(err.message)
+    let errorMessage: string
+
+    if (error instanceof z.ZodError) {
+      let pretifiedError = z.prettifyError(error)
+      errorMessage = pretifiedError.replace(/[\n\r]/g, ' ')
+    } else {
+      var err = error as Error;
+      errorMessage = err.message
+    }
     
     // throw error;
-    res.status(400).send({"Error": err.message})
+    res.status(400).send({"error": errorMessage})
   }
 
 }
