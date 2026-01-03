@@ -6,7 +6,7 @@ import images from "../../../public/exporter"
 import Carousel from "../Carousel/Carousel";
 
 // Global Vars
-const BACKEND_URL: string = import.meta.env.BACKEND_URL ? import.meta.env.BACKEND_URL: "http://localhost:8080";
+const VERCEL_ENDPOINT: string = import.meta.env.VERCEL_SERVER_ENDPOINT ? import.meta.env.VERCEL_SERVER_ENDPOINT: "/api/request-handler";
 const WORK_EXPERIENCE_COLLECTION: string = import.meta.env.WORK_EXPERIENCE_COLLECTION ? import.meta.env.WORK_EXPERIENCE_COLLECTION : "workExperience";
 const experienceRequest = {
     "isList": true,
@@ -225,7 +225,7 @@ const Work = () => {
     
     useEffect(() => {
  
-        axios.post<WorkExperienceType[]>(BACKEND_URL, experienceRequest,
+        axios.post<{status:string, payload: WorkExperienceType[]}>(VERCEL_ENDPOINT, experienceRequest,
             {   
                 headers: {
                     "Content-Type": "application/json"
@@ -234,18 +234,17 @@ const Work = () => {
         ).then(resp => {
             if (resp.status === 200 && resp.data) {
                 console.log(resp.data)
-                setWorkExperience(resp.data)
+                setWorkExperience(resp.data.payload)
             } else if (resp.status !== 200) {
-                console.error(`Endpoint - ${BACKEND_URL} returned the following error status code - ${resp.status}!`)
-                throw new Error(`Endpoint - ${BACKEND_URL} returned the following error status code - ${resp.status}!`)
+                console.error(`Endpoint - ${VERCEL_ENDPOINT} returned the following error status code - ${resp.status}!`)
+                throw new Error(`Endpoint - ${VERCEL_ENDPOINT} returned the following error status code - ${resp.status}!`)
             } else if (resp.data === null) {
-                console.error(`Empty data was returned from the following url - ${BACKEND_URL}!`)
-                throw new Error(`Empty data was returned from the following url - ${BACKEND_URL}!`)
+                console.error(`Empty data was returned from the following url - ${VERCEL_ENDPOINT}!`)
+                throw new Error(`Empty data was returned from the following url - ${VERCEL_ENDPOINT}!`)
             }
         }).catch((err) => {
             throw err;
         })
-
     }, [])
     
     return (

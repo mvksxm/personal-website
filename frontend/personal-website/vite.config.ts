@@ -8,7 +8,12 @@ dotenv.config()
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    allowedHosts: true
+    allowedHosts: true,
+
+    // For testing
+    // proxy: {
+    //   "/api": "http://localhost:3000"
+    // }
   },
   plugins: [react()],
   define: {
