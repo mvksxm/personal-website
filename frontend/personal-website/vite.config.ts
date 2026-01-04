@@ -17,7 +17,7 @@ export default defineConfig({
   },
   plugins: [react()],
   define: {
-    "process.env.BACKEND_URL": JSON.stringify(process.env.BACKEND_URL),
+    "process.env.VERCEL_SERVER_ENDPOINT": JSON.stringify(process.env.VERCEL_SERVER_ENDPOINT),
     "process.env.WORK_EXPERIENCE_COLLECTION": JSON.stringify(process.env.WORK_EXPERIENCE_COLLECTION),
   }
 })
