@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import "./Work.css"
-import axios from "axios";
-import type { StringDivProps, WorkExperienceType } from "../../models";
+import type { StringDivProps, WorkExperienceType } from "../../models/models";
 import images from "../../../public/exporter"
 import Carousel from "../Carousel/Carousel";
+import Requestor from "../../utils/Requestor";
 
 // Global Vars
 const VERCEL_ENDPOINT: string = import.meta.env.VERCEL_SERVER_ENDPOINT ? import.meta.env.VERCEL_SERVER_ENDPOINT: "/api/request-handler";
@@ -20,6 +20,11 @@ const dtf = new Intl.DateTimeFormat("en-US", {
         timeZone: "UTC"
     }
 )
+
+// Requestor Instance
+const requestor = new Requestor(VERCEL_ENDPOINT, "mtWorkExperience", {
+    "Content-Type": "application/json"
+})
 
 const testData = [
     {
@@ -223,28 +228,14 @@ const generateWorkFrames = (elements: WorkExperienceType[]): React.ReactElement<
 const Work = () => {
     const [workExperience, setWorkExperience] = useState<WorkExperienceType[]>([])
     
-    useEffect(() => {
- 
-        axios.post<{status:string, payload: WorkExperienceType[]}>(VERCEL_ENDPOINT, experienceRequest,
-            {   
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }
-        ).then(resp => {
-            if (resp.status === 200 && resp.data) {
-                console.log(resp.data)
-                setWorkExperience(resp.data.payload)
-            } else if (resp.status !== 200) {
-                console.error(`Endpoint - ${VERCEL_ENDPOINT} returned the following error status code - ${resp.status}!`)
-                throw new Error(`Endpoint - ${VERCEL_ENDPOINT} returned the following error status code - ${resp.status}!`)
-            } else if (resp.data === null) {
-                console.error(`Empty data was returned from the following url - ${VERCEL_ENDPOINT}!`)
-                throw new Error(`Empty data was returned from the following url - ${VERCEL_ENDPOINT}!`)
-            }
+    useEffect(() => {    
+        requestor.postRequest<{status:string, payload: WorkExperienceType[]}>(
+            experienceRequest
+        ).then((resp) => {
+            setWorkExperience(resp.payload)
         }).catch((err) => {
-            throw err;
-        })
+            throw err
+        }) 
     }, [])
     
     return (

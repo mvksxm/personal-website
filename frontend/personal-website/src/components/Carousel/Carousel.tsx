@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { StringDivProps } from "../../models";
+import type { StringDivProps } from "../../models/models";
 import images from "../../../public/exporter";
 import './Carousel.css'
 
