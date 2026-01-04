@@ -18,7 +18,6 @@ const Navbar = ({isFormedNav}: NavbarProps) => {
   const sectionLightCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        console.log("Section intersection!")
         setActiveSection(entry.target.id)
       }
     })
@@ -27,15 +26,12 @@ const Navbar = ({isFormedNav}: NavbarProps) => {
   const navColorCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach(
       (entry) => {
-        console.log(entry.target.id)
 
         if(entry.isIntersecting && entry.target.id != "home") { 
-          console.log("id true:", entry.target.id)
           changeInfoColor(true)
         }
 
         if(entry.isIntersecting && entry.target.id === "home") {
-          console.log("id false:", entry.target.id)
           changeInfoColor(false)
         }
       }
@@ -101,7 +97,6 @@ const Navbar = ({isFormedNav}: NavbarProps) => {
     }
 
     var sectionPosition = targetSection.getBoundingClientRect().top + window.scrollY
-    console.log(window.devicePixelRatio)
 
     window.scrollTo({
       top: sectionPosition - navSize.current,

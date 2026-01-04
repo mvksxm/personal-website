@@ -13,21 +13,16 @@ const SectionWrapper = ({sectionId, children}: Props) => {
 
     const animateImages = (images: Array<HTMLImageElement>, isRollback: boolean = false) => {
         
-        // const getMainClass = (populatedClass: string) => populatedClass.split(" ")[0]
         images.forEach(image => {
 
             var isLeft = image.id.includes("left")
 
             if (!isRollback) {
-                // image.className = getMainClass(image.className)
-                // image.className = `${getMainClass(image.className)} rollout-animation-${isLeft ? "left" : "right"}`
                 image.classList.remove(`rollback-animation-${isLeft ? "left" : "right"}`)
                 image.classList.add(`rollout-animation-${isLeft ? "left" : "right"}`)
             }
 
             if (isRollback) {
-                // image.className = getMainClass(image.className)
-                // image.className = `${getMainClass(image.className)} rollback-animation-${isLeft ? "left" : "right"}`
                 image.classList.remove(`rollout-animation-${isLeft ? "left" : "right"}`)
                 image.classList.add(`rollback-animation-${isLeft ? "left" : "right"}`)
             }
@@ -48,7 +43,6 @@ const SectionWrapper = ({sectionId, children}: Props) => {
 
 
                     if (section.intersectionRatio < 0.3 && isRecentlyObservedRef.current ) {
-                        console.log("No advance intersection")
                         isRecentlyObservedRef.current = false; 
                         animateImages(filteredImages, true)
                     }

@@ -11,9 +11,7 @@ interface CarouselProps {
 
 // Function that is going to accept a list of classes to add and a list of classes to remove
 const adjustClasses = (elementId: string, toAdd: string[], toRemove: string[] = []) => {
-    console.log("Inside the adjustClasses func")
     let elementFromDom = document.getElementById(elementId)
-    console.log(elementFromDom)
     if (!elementFromDom) {
         throw new Error(`An element with the following id -> ${elementId} does not exist!`)
     }
@@ -29,9 +27,6 @@ const adjustClasses = (elementId: string, toAdd: string[], toRemove: string[] = 
 }
 
 const Carousel = ({elements}: CarouselProps) => {
-    // const [currCentral, setCurrCentral] = useState(0)
-    // const [isRightVisible, setIsRightVisible] = useState(false)
-    // const [isLeftVisible, setIsLeftVisible] = useState(false)
     const currCentral = useRef(0)
     const [isRightVisible, setIsRightVisible] = useState(false)
     const [isLeftVisible,setIsLeftVisible] = useState(false)

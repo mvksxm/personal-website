@@ -14,30 +14,6 @@ const HeadSection = () => {
     const [phraseIdx, changePhraseIdx] = useState(0)
     const [isDelete, setIsDelete] = useState(false)
 
-
-    // const modifyPhraseDisplayed = () => {
-
-    //     // Change back to the initial phrase.
-    //     if (phraseIdx >= phrasesToDispaly.length) {
-    //         changePhraseIdx(0)
-    //     }
-
-    //     const phraseToDisplay = phrasesToDispaly[phraseIdx]
-    //     var displayedContent = ""
-
-    //     for(var i = 0; i<phraseToDisplay.length; i++) {
-    //         displayedContent += phraseToDisplay[i]
-    //         changeCurrentPhrase(displayedContent)
-    //     }
-
-    //     for(var i = phraseToDisplay.length - 1; i>=0; i--) {
-    //         displayedContent = displayedContent.slice(0,i)
-    //         changeCurrentPhrase(displayedContent)
-    //     }
-
-    //     changePhraseIdx(phraseIdx + 1)
-    // }
-
     const modifyPhraseDisplayed = () => {
         
         var currPhrase = phrasesToDisplay[phraseIdx]
@@ -67,7 +43,6 @@ const HeadSection = () => {
     }
 
     useEffect(() => {
-        console.log("triggered")
         const timeout = setTimeout
         (
             modifyPhraseDisplayed, 

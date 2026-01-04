@@ -20,9 +20,8 @@ function App() {
      }
   })
 
-    // Resize Event Listener
+  // Resize Event Listener
   window.addEventListener('resize', () => {
-    console.log(window.innerWidth)
     if(window.innerWidth <= 800) {
       setFormedNav(true)
     } 
