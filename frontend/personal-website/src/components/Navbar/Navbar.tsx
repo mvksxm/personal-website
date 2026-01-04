@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import "./Navbar.css";
 import images from "../../../public/exporter"
-import Utils from "../../utils/Utils";
 import { Collapse } from 'bootstrap';
 
 
@@ -13,35 +12,8 @@ interface NavbarProps {
 const Navbar = ({isFormedNav}: NavbarProps) => {
   
   const [section, setActiveSection] = useState("")
-  const interThreshold = useRef(0.5)
-  // const recolorThreshold = useRef(0.75)
   const [isInfoColor, changeInfoColor] = useState(false)
   const navSize = useRef(0)
-
-  const resizeCallback = () => {
-    var devicePixelRatio = window.devicePixelRatio
-    // console.log("Recolor threshold ", recolorThreshold)
-
-    // if (devicePixelRatio >= 1.5) {
-    //   // setRecolorThreshold(0.1)
-    //   recolorThreshold.current = 0.1
-    // }
-
-    // if (devicePixelRatio < 1.5) {
-    //   console.log("settting")
-    //   recolorThreshold.current = 0.75
-    // }
-
-    if (devicePixelRatio > 1) {
-      var threshold = Utils.floorFractionalNumber(0.5 / Utils.floorFractionalNumber(devicePixelRatio, 2), 1)
-      interThreshold.current = threshold
-    }
-
-    if (devicePixelRatio <= 1) {
-      interThreshold.current = 0.5
-    }
-
-  }
 
   const sectionLightCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach(entry => {
@@ -114,16 +86,7 @@ const Navbar = ({isFormedNav}: NavbarProps) => {
 
       createObservers()
 
-      // Obsolete logic (will be removed)
-      // const resizeLogic = () => {
-      //   resizeCallback()
-      //   createObservers()
-      // }
-      // resizeLogic()
-      // window.addEventListener('resize', resizeLogic)
-
       return () => {
-        // window.removeEventListener('resize', resizeCallback);
         sectionFleshObserver?.disconnect();
         navChangeObserver?.disconnect();
       }
