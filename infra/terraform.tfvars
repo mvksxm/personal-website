@@ -68,7 +68,7 @@ work_experience = [
     "jobResponsibilities" : {
       "arrayValue" : {
         "values" : [
-          { "stringValue" : "Initiated, architected and developed Golang-based custom parsing solution for automatic modification of Terraform configuration files and exposed it via a REST API. Solution reduced manual efforts, when creating GCP resources, by 80%." },
+          { "stringValue" : "Initiated, architected and developed Golang-based custom parsing solution for automatic modification of Terraform configuration files and exposed it via a REST API. Solution reduced manual efforts, when creating GCP resources, by 70%." },
           { "stringValue" : "Developed a solution in a form of Dashboard for monitoring BigQuery processing slot consumption across the P&G's GCP environment.The solution allowed Cloud Support Team to identify and resolve issues 50% faster.(Avg. resolution time was reduced from 1 hour to 30 minutes." },
           { "stringValue" : "Guided application teams on best practices for deploying solutions on P&G's GCP platform. Reviewed and adjusted architectures, created CI/CD pipelines (Jenkins, Cloud Build, GitHub Actions), and developed Terraform configurations." },
           { "stringValue" : "Packaged GCP resources and reusable application architectures into Terraform modules for the later usage by application teams. Enforced security and performance best practices in the modules delivered." }

@@ -20,7 +20,10 @@ const About = () => {
             "K8S", 
             "Django",
             "Flask",
-            "React"
+            "React",
+            "GCP",
+            "AWS",
+            "Azure"
         ]
     }
 
@@ -36,7 +39,7 @@ const About = () => {
             <h1 className="head-about">About <b>Me</b></h1>
             <div className="row" style={{justifyContent: "center"}}>
                 <div className="col col-general col-centered">
-                    <img className="personal-photo" src={images["caracal.jpg"]}></img>
+                    <img className="personal-photo" src={images["personal-photo.jpg"]}></img>
                 </div>
                 <div className="col col-general">
                     <b>
