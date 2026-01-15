@@ -1,3 +1,8 @@
+@use "sass:math";
+
+$photo-width: 540px;
+$photo-height: 809px;
+
 .container-about {
     width: 70vw;
     font-family:'JetBrains Mono';
@@ -14,8 +19,8 @@
 }
 
 .personal-photo {
-    width: 540px;
-    height: 809px ;
+    width: $photo-width;
+    height: $photo-height;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     margin-bottom: 2%;
 }
@@ -75,8 +80,8 @@ h3 {
 
 @media (max-width: 500px) {
     .personal-photo  {
-        width: 256px;
-        height: 384px ;
+        width: math.div($photo-width, 2);
+        height: math.div($photo-height, 2);
     }
 
     .container-about { 
