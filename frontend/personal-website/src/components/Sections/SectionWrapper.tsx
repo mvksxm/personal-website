@@ -82,7 +82,6 @@ const SectionWrapper = ({sectionId, children}: Props) => {
             <section id={sectionId} className="section">
                 {children}
             </section>
-            <hr />
         </div>
     )
 }

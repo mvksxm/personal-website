@@ -5,7 +5,7 @@ $right-travel-distance: 13vw;
 
 .shared-bg { 
     background-size: cover;
-    background: linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%);
+    // background: linear-gradient(90deg,#000000 0%, rgb(7, 16, 119) 100%);
     // background-color: linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%);
 
       /* url("/public/images/compositions/cloud-trans-left.png"), 
@@ -96,11 +96,6 @@ $right-travel-distance: 13vw;
   min-height: 100dvh;
   width: 100vw;
   overflow: hidden;
-}
-
-hr {
-  color: #ffffff;
-  margin: 0;
 }
 
 .rollout-animation-left {

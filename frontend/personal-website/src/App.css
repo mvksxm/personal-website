@@ -4,6 +4,9 @@ html {
 
 .main-body {
   overflow-x: hidden;
+  font-family:'JetBrains Mono';
+  background: linear-gradient(90deg,#000000 0%, rgb(7, 16, 119) 50%, #000000 100%);
+  color: white;
 }
 
 .cloud-bg-image{
@@ -13,14 +16,17 @@ html {
   background-repeat: no-repeat;
 }
 
+hr {
+  color: #ffffff;
+  margin: 0;
+}
+
 footer {
   width: 100vw;
-  min-height: 8vw;
-  background: linear-gradient(90deg,#5170ff 0%, rgba(81, 90, 196, 1) 100%);
+  min-height: 5vw;
   display: flex;
   align-items : center;
   justify-content: center;
-  font-family:'JetBrains Mono';
   text-align: center;
   font-size: 1vw;
 }

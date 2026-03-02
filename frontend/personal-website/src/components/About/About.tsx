@@ -47,15 +47,13 @@ const About = () => {
                     </b>
                     <h3>My name is <b>Maksim Turtsevich.</b></h3>
                     <p>
-                        I'm a results-driven <b>Software Engineer</b> with the specialization in <b>Cloud</b> and <b>Platform Development</b>.
-                        With 4 years of commercial experience in <b>Cloud Infrastructure</b>  &  <b>Backend Software Development</b> and 
-                        with deep expertise in <b>Google Cloud</b>, <b>Terraform</b>, and <b>System Engineering</b>, 
-                        I specialize in designing and implementing efficient, scalable, and cost-effective cloud solutions tailored to diverse use cases, 
-                        including <b>data pipelines</b>, <b>microservice-based</b> enterprise applications, and <b>CI/CD pipelines</b>.
+                        With over 4 years of commercial experience in Cloud and Software Engineering, I'm specializing in the end to end planning, design and implementation of complex 
+                        Cloud based systems for different usecases. During my recent assignments, I had a chance to contribute to the development of internal and customer facing Backend APIs, 
+                        engineered internal productivity tools and developed monitoring solutions for the better visibility on the cost and resource utilization of the Cloud-based data architecture.
                     </p>
                     <p>
-                        Beyond my <b>Cloud Engineering</b> expertise, I bring robust <b>Software Engineering</b> skills, particularly in <b>Big Data</b> and <b>Backend Development</b>. 
-                        Proficient in <b>Python</b>, <b>Golang</b>, <b>Docker</b>, and <b>Kubernetes</b>, I excel in roles requiring the end-to-end design and implementation of complex solutions.
+                        Aside from the Backend Engineering experience, I also possess knowledge in areas such as Big Data Engineering and DevOps Engineering, gained from the projects related to the 
+                        development of Data Pipelines, deployment of CI/CD Pipelines and provisioning/administration of a Cloud Infrastructure.
                     </p>
                     <p>
                         Finally, I also possess a <b>MSc. in Computer Science</b> from the <b>Polish Japanese Academy of the Information Technology</b> located 

@@ -1,10 +1,10 @@
 .nav-appear {
-    border: 2px solid #08224754 !important;
-    background-color: #6da2f1;
+    border: 1px solid #00000086 !important;
+    background-color: #160364;
 }
 
 .nav-info-color {
-    background-color: #5170fc;
+    background-color: #160364;
 }
 
 .navbar {
@@ -20,12 +20,19 @@
     align-items: center;      
 }
 
+.mr-auto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* CSS for the Brand on the Navbar */
 .navbar .container .name-brand {
-    font-family:'Montserrat', sans-serif;
+    /* font-family:'Montserrat', sans-serif; */
     text-decoration: none;
     color: rgb(255, 255, 255) !important; 
     padding-top: 2px;
+    font-size: 20px;
     /* margin-left: -45vw; */
 }
 
@@ -37,7 +44,8 @@
 
 .navbar-nav-ul .nav-item {
     margin-right: 20px;
-    font-family:'Montserrat', sans-serif !important;;
+    font-size: 20px;
+    /* font-family:'Montserrat', sans-serif !important; */
 }
 
 .navbar-nav-ul .nav-item:hover {
@@ -53,7 +61,7 @@
 }
 
 .navbar-nav-ul .nav-link:hover {
-    color: rgb(255, 255, 255)!important;
+    /* color: rgb(255, 255, 255)!important; */
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.801),
     0 0 12px rgba(255, 255, 255, 0.6);
 }

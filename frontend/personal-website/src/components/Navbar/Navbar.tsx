@@ -143,9 +143,9 @@ const Navbar = ({isFormedNav}: NavbarProps) => {
       <nav id="navbar" className={`navbar nav-color fixed-top navbar-expand-lg ${isFormedNav ? "nav-appear" : ""} ${isInfoColor ? "nav-info-color" : ""}`}>
         <div className="container navbar-nav-container">
           <div className="mr-auto">
-            <img className="navbar-icon" src={images["cloud.png"]} style={{marginRight: "20px"}}></img>
+            <img className="navbar-icon" src={images["brand-m.png"]} style={{marginRight: "20px"}}></img>
             <a className="name-brand" href="#">Maksim Turtsevich</a>
-            <img className="navbar-icon" src={images["cloud.png"]} style={{marginLeft: "20px"}}></img>
+            <img className="navbar-icon" src={images["brand-t.png"]} style={{marginLeft: "20px"}}></img>
           </div>
           <button onClick={() => openNavbar() || closeNavbar()} className="navbar-toggler" type="button" aria-label="Toggle navigation">
             <img className="nav-burger" src={images["burger.svg"]}></img>

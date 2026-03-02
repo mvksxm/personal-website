@@ -5,6 +5,7 @@ import Head from './components/Head/Head'
 import About from './components/About/About'
 import SectionWrapper from './components/Sections/SectionWrapper'
 import Work from './components/Work/Work'
+import Utils from './utils/Utils'
 
 function App() {
 
@@ -30,18 +31,19 @@ function App() {
 
   return (
     <div className="main-body">
-      <div className="cloud-bg-image">
-        <Navbar isFormedNav={isFormedNav} />
-        <Head />
-      </div>
+      <Navbar isFormedNav={isFormedNav} />
+      <Head />
+      <hr />
       <SectionWrapper sectionId="about">
         <About />
       </SectionWrapper>
+      <hr />
       <SectionWrapper sectionId="work">
         <Work />
       </SectionWrapper>
+      <hr />
       <footer>
-        <div style={{color: "white"}}>© Copyright | Maksim Turtsevich 2026 All Rights Reserved</div>
+        <div>© Copyright | Maksim Turtsevich {Utils.GetDate().split("/")[2]} All Rights Reserved</div>
       </footer>
     </div>
   )

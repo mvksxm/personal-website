@@ -1,7 +1,7 @@
 .head-text {
-    font-family:'Montserrat', sans-serif;
+    /* font-family:'Montserrat', sans-serif; */
     color: rgba(255,255,255);
-    text-shadow: 0 0 1.5px;
+    /* text-shadow: 0 0 1.5px; */
 }
 
 .head-name {
@@ -100,9 +100,14 @@
     width: 40px;
     height: 40px;
     transition: fill 0.3s ease; 
+    fill: white;
+    will-change: filter;
+    filter: drop-shadow(0px 0px 10px rgb(0, 0, 0)); 
 }
 .personal-link-icon:hover {
-    fill: #ffffff;
+    filter: drop-shadow(0 0 6px rgb(7, 16, 119))
+            drop-shadow(0 0 12px rgb(7, 16, 119));
+    transform: scale(1.03);
 }
 
 @media (max-width: 1000px) {
