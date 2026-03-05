@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import type { StringDivProps } from "../../models/models";
 import images from "../../../public/exporter";
 import './Carousel.css'
+import Utils from "../../utils/Utils";
 
 
 interface CarouselProps {
@@ -10,21 +11,21 @@ interface CarouselProps {
 
 
 // Function that is going to accept a list of classes to add and a list of classes to remove
-const adjustClasses = (elementId: string, toAdd: string[], toRemove: string[] = []) => {
-    let elementFromDom = document.getElementById(elementId)
-    if (!elementFromDom) {
-        throw new Error(`An element with the following id -> ${elementId} does not exist!`)
-    }
+// const adjustClasses = (elementId: string, toAdd: string[], toRemove: string[] = []) => {
+//     let elementFromDom = document.getElementById(elementId)
+//     if (!elementFromDom) {
+//         throw new Error(`An element with the following id -> ${elementId} does not exist!`)
+//     }
     
-    let classList = elementFromDom.classList
-    if (toRemove) {
-        classList.remove(...toRemove)
-    }
+//     let classList = elementFromDom.classList
+//     if (toRemove) {
+//         classList.remove(...toRemove)
+//     }
 
-    if (toAdd) {
-        classList.add(...toAdd)
-    }
-}
+//     if (toAdd) {
+//         classList.add(...toAdd)
+//     }
+// }
 
 const Carousel = ({elements}: CarouselProps) => {
     const currCentral = useRef(0)
@@ -36,14 +37,14 @@ const Carousel = ({elements}: CarouselProps) => {
     useEffect(
         () => {
             const currCentralVal = currCentral.current
-            adjustClasses(elements[currCentralVal].props.id, ["central-frame"])
+            Utils.AdjustClasses(elements[currCentralVal].props.id, ["central-frame"])
             if (currCentralVal < elements.length - 1) {
                 setIsRightVisible(true)
-                adjustClasses(elements[currCentralVal + 1].props.id, ["right-frame-blurred"])
+                Utils.AdjustClasses(elements[currCentralVal + 1].props.id, ["right-frame-blurred"])
 
                 let divsToHide = elements.slice(currCentralVal + 2, lenElements)
                 for (let div of divsToHide) {
-                    adjustClasses(div.props.id, ["disappeared-element"])
+                    Utils.AdjustClasses(div.props.id, ["disappeared-element"])
                 }
 
             }
@@ -66,38 +67,38 @@ const Carousel = ({elements}: CarouselProps) => {
 
             if (currCentralLocal > 0) {
                 let prevElemIdx = currCentralLocal - 1
-                adjustClasses(elements[prevElemIdx].props.id, ["disappeared-element"], ["left-frame-blurred"])
+                Utils.AdjustClasses(elements[prevElemIdx].props.id, ["disappeared-element"], ["left-frame-blurred"])
             }
 
             // Set current to left
-            adjustClasses(elements[currCentralLocal].props.id, ["left-frame-blurred"], ["central-frame"])
+            Utils.AdjustClasses(elements[currCentralLocal].props.id, ["left-frame-blurred"], ["central-frame"])
 
             // Set right to current
             currCentralLocal += 1
-            adjustClasses(elements[currCentralLocal].props.id, ["central-frame"], ["right-frame-blurred"])
+            Utils.AdjustClasses(elements[currCentralLocal].props.id, ["central-frame"], ["right-frame-blurred"])
 
             // Set right from right to right from current
             if (currCentralLocal < lenElements - 1) {
-                adjustClasses(elements[currCentralLocal+1].props.id, ["right-frame-blurred"], ["disappeared-element"])
+                Utils.AdjustClasses(elements[currCentralLocal+1].props.id, ["right-frame-blurred"], ["disappeared-element"])
             }
         }
 
         if (!isRight) {
             if (currCentralLocal < lenElements - 1) {
                 let nextElemIdx = currCentralLocal + 1
-                adjustClasses(elements[nextElemIdx].props.id, ["disappeared-element"], ["right-frame-blurred"])
+                Utils.AdjustClasses(elements[nextElemIdx].props.id, ["disappeared-element"], ["right-frame-blurred"])
             }
 
             // Set current to right
-            adjustClasses(elements[currCentralLocal].props.id, ["right-frame-blurred"], ["central-frame"])
+            Utils.AdjustClasses(elements[currCentralLocal].props.id, ["right-frame-blurred"], ["central-frame"])
 
             // Set left to current
             currCentralLocal -= 1
-            adjustClasses(elements[currCentralLocal].props.id, ["central-frame"], ["left-frame-blurred"])
+            Utils.AdjustClasses(elements[currCentralLocal].props.id, ["central-frame"], ["left-frame-blurred"])
 
             // Set left from left to left from current
             if (currCentralLocal > 0) {
-                adjustClasses(elements[currCentralLocal-1].props.id, ["left-frame-blurred"], ["disappeared-element"])
+                Utils.AdjustClasses(elements[currCentralLocal-1].props.id, ["left-frame-blurred"], ["disappeared-element"])
             }
         }
 
