@@ -1,7 +1,5 @@
 .work-container {
     max-width: 70vw;
-    font-family:'JetBrains Mono';
-    color: white;
     margin: auto;
 }
 
@@ -25,7 +23,18 @@
     background-color: rgb(7, 16, 119) ;
     border: 2px solid white;
     border-radius: 10px;
+    position: relative;
+}
+
+.work-frame.desktop {
     transition: scale  0.3s ease, opacity 0.3s ease;
+}
+
+.work-frame.mobile {
+    width: 85vw !important;
+    margin-bottom: 10em;
+    opacity: 0;
+    transition: opacity 0.8s ease, transform 0.8s ease, scale 0.8s ease;
 }
 
 .work-frame-img {
@@ -45,8 +54,8 @@
 .work-frame-location-date {
     display: flex;
     align-items: center;
-    margin-right: 5%;
     min-width: 10%;
+    margin: 1%;
 }
 
 .work-frame-icon {
@@ -54,8 +63,7 @@
 }
 
 .work-frame-body {
-    margin-top: 1vh; 
-    min-height: 38vh;
+    /* min-height: 38vh; */
     max-width: 100%;
     display: flex;
     align-items: center;

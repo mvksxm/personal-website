@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, type ReactNode } from "react"
 import "./Work.css"
 import type { StringDivProps, WorkExperienceType } from "../../models/models";
 import images from "../../../public/exporter"
 import Carousel from "../Carousel/Carousel";
 import Requestor from "../../utils/Requestor";
+import Bowser from "bowser";
+import FrameList from "../FrameList/FrameList";
 
 // Global Vars
 const VERCEL_ENDPOINT: string = import.meta.env.VERCEL_SERVER_ENDPOINT ? import.meta.env.VERCEL_SERVER_ENDPOINT: "/api/request-handler";
@@ -138,16 +140,20 @@ const requestor = new Requestor(VERCEL_ENDPOINT, "mtWorkExperience", {
 // ]
 
 const arrangeResp = (jobResp: string[]) => {
-    let currIndex = 0;
     return (
-        jobResp.map(resp => {
-            if (currIndex === jobResp.length - 1) {
-                return <li>{resp}</li>
+        jobResp.map((resp, idx ) => {
+
+            if (idx == jobResp.length - 1) {
+                return (
+                    <>
+                        <div style={{marginLeft: "1vh", marginRight: "1vh", marginBottom: "1vh"}}>{resp}</div>
+                    </>
+                )
             }
-            currIndex += 1
+
             return (
                 <>
-                    <li>{resp}</li>
+                    <div style={{marginLeft: "1vh", marginRight: "1vh"}}>{resp}</div>
                     <br />
                 </>
             )
@@ -155,7 +161,7 @@ const arrangeResp = (jobResp: string[]) => {
     )
 }
 
-const generateWorkFrames = (elements: WorkExperienceType[]): React.ReactElement<StringDivProps>[] => {
+const generateWorkFrames = (elements: WorkExperienceType[], isMobile: boolean = false): React.ReactElement<StringDivProps>[] => {
     elements.sort((a, b) => {
         let dsa = new Date(a["dateStart"])
         let dsb = new Date(b["dateStart"])
@@ -170,7 +176,7 @@ const generateWorkFrames = (elements: WorkExperienceType[]): React.ReactElement<
 
     let framesArray: React.ReactElement<StringDivProps>[] = elements.map((elem, idx) => {
         return (
-            <div id={`we${idx}`} className="work-frame">
+            <div id={`we-${idx}`} className={isMobile ? "work-frame mobile" : "work-frame desktop"}>
                 <div className="work-frame-header">
                     <img className="work-frame-img" src={elem["logoUrl"]}></img>
                     <div>
@@ -178,31 +184,31 @@ const generateWorkFrames = (elements: WorkExperienceType[]): React.ReactElement<
                         <div>{elem.position}</div>
                     </div>
                 </div>
-                <div style={{display: "flex", marginTop: "1%"}}>
+                <div style={{marginTop: "1%", marginBottom: "1%"}}>
+                    <hr />
                     <div className="work-frame-location-date">
                         <img className="work-frame-icon" src={images["location.svg"]}></img>
                         <div style={{marginLeft:"0.2vw"}}>{elem.location}</div>
                     </div>
-                    <div className="work-frame-location-date" style={{width: "50%"}}>
+                    <hr />
+                    <div className="work-frame-location-date">
                         <img className="work-frame-icon" src={images["calendar.svg"]}></img>
-                        <div style={{marginLeft:"0.5vw"}}>{dtf.format(new Date(elem.dateStart))} - {elem.dateEnd === "Current" ? "Current" : dtf.format(new Date(elem.dateEnd))}</div>
+                    <div style={{marginLeft:"0.5vw"}}>{dtf.format(new Date(elem.dateStart))} - {elem.dateEnd === "Current" ? "Current" : dtf.format(new Date(elem.dateEnd))}</div>
                     </div>
+                    <hr />
                 </div>
-
                 <div className="work-frame-body">
                     <div>
-                        <ul>
-                            {arrangeResp(elem["jobResponsibilities"])}
-                        </ul>
-                    </div>
-                    <div style={{margin: "1%", display: "flex", alignItems: "center",width: "100%"}}>
-                        <span>Technologies: </span>
-                        <div style={{display: "flex", alignItems: "center", flexWrap:"wrap"}}>
-                            {elem["technologies"].map(tech => <div className="tech-item">{tech}</div>)}
-                        </div>   
+                        {arrangeResp(elem["jobResponsibilities"])}
                     </div>
                 </div>
-                
+                <hr />
+                <div style={{margin: "1%", display: "flex", alignItems: "center",width: "100%"}}>
+                    <span>Technologies: </span>
+                    <div style={{display: "flex", alignItems: "center", flexWrap:"wrap"}}>
+                        {elem["technologies"].map(tech => <div className="tech-item">{tech}</div>)}
+                    </div>   
+                </div>     
             </div>
         )
     })
@@ -210,9 +216,37 @@ const generateWorkFrames = (elements: WorkExperienceType[]): React.ReactElement<
     return framesArray   
 }
 
+const checkIsMobile = (): boolean => {
+    var bowser = Bowser.getParser(window.navigator.userAgent)
+    return bowser.getPlatformType() === "mobile"
+}
+
+const setPlatformComponent = (workExperience: WorkExperienceType[]): ReactNode => {
+
+    if (workExperience.length === 0) {
+        return (
+            <div />
+        )
+    }
+
+    var isMobile = checkIsMobile()
+    if (isMobile) {
+        return (
+            <div>
+                <FrameList elements={generateWorkFrames(workExperience, true)} baseClass="work-frame" />
+            </div>
+        )
+    }
+
+    return (
+        <Carousel elements={generateWorkFrames(workExperience)}/> 
+    )
+
+}
+
 const Work = () => {
     const [workExperience, setWorkExperience] = useState<WorkExperienceType[]>([])
-    
+
     useEffect(() => {    
         requestor.postRequest<{status:string, payload: WorkExperienceType[]}>(
             experienceRequest
@@ -220,14 +254,15 @@ const Work = () => {
             setWorkExperience(resp.payload)
         }).catch((err) => {
             throw err
-        }) 
+        })
+             
     }, [])
     
     return (
         <div className="work-container">
             <h1 className="work-header">Work Experience</h1>
             <div className="work-content">
-                {workExperience.length > 0 ? <Carousel elements={generateWorkFrames(workExperience)}/> : <div/>}
+                {setPlatformComponent(workExperience)}
             </div>         
         </div>
     )
