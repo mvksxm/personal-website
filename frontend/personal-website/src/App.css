@@ -2,11 +2,20 @@ html {
   scroll-behavior: smooth;
 }
 
-.main-body {
+.root {
   overflow-x: hidden;
   font-family:'JetBrains Mono';
   background: linear-gradient(90deg,#000000 0%, rgb(7, 16, 119) 50%, #000000 100%);
   color: white;
+}
+
+.main-body {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.not-loaded {
+    transform: translateY(30px) !important;
+    opacity: 0;
 }
 
 .cloud-bg-image{
