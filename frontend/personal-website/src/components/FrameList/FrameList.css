@@ -1,0 +1,13 @@
+.bottom-position {
+    transform: translateY(30px) !important;
+    scale: 0.5;
+}
+
+.appear {
+    opacity: 1.0 !important;
+}
+
+.top-position {
+    transform: translateY(-30px) !important;
+    scale: 0.5;
+}
