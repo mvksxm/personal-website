@@ -36,13 +36,13 @@ const SectionWrapper = ({sectionId, children}: Props) => {
             (sections) => {
                 sections.forEach(section => {
 
-                    if (section.intersectionRatio >= 0.3 && section.isIntersecting) {
+                    if (section.intersectionRatio >= 0.1 && section.isIntersecting) {
                         isRecentlyObservedRef.current = true;
                         animateImages(filteredImages)
                     }
 
 
-                    if (section.intersectionRatio < 0.3 && isRecentlyObservedRef.current ) {
+                    if (section.intersectionRatio < 0.1 && isRecentlyObservedRef.current ) {
                         isRecentlyObservedRef.current = false; 
                         animateImages(filteredImages, true)
                     }
@@ -51,7 +51,7 @@ const SectionWrapper = ({sectionId, children}: Props) => {
 
             },
             {
-                threshold: 0.3
+                threshold: 0.1
             }
         )
 
@@ -74,14 +74,14 @@ const SectionWrapper = ({sectionId, children}: Props) => {
 
     return (
         <div className="shared-bg">
-            <img id={`cloud-animated-left-top-${sectionId}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
-            <img id={`cloud-animated-left-bottom-${sectionId}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
-            <img id={`cloud-animated-right-top-${sectionId}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
-            <img id={`cloud-animated-right-bottom-${sectionId}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
             <img id={`section-divider-${sectionId}`} src={images["section-divider-cropped.svg"]} className="section-divider"></img>
+            <img id={`cloud-animated-left-top-${sectionId}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
+            <img id={`cloud-animated-right-top-${sectionId}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
             <section id={sectionId} className="section">
                 {children}
             </section>
+            <img id={`cloud-animated-left-bottom-${sectionId}`} src={images["cloud-trans-left.png"]} className="cloud"></img>
+            <img id={`cloud-animated-right-bottom-${sectionId}`} src={images["cloud-trans-right.png"]} className="cloud"></img>
         </div>
     )
 }

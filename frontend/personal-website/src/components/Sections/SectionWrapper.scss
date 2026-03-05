@@ -30,8 +30,6 @@ $right-travel-distance: 13vw;
     filter: drop-shadow(0px 12px 28px rgba(0, 0, 0, 0.534)); /* shadow */
     pointer-events: none;
     opacity: 0;
-    // SCSS Vars
-    $travel-distance: 200px;
 
     // CSS Vars
     --top-distance: auto;
@@ -49,31 +47,32 @@ $right-travel-distance: 13vw;
     animation: var(--animation);
 
     // Left upper
-    &:nth-child(1){
+    &:nth-child(1 of .cloud){
       --top-distance: 7vw;
       // --left-distance: -300px; // final-distance: -110 px -290px 
       --left-distance: -20vw;
       --width: 20vw;
     }
 
-
-    // Left bottom
-    &:nth-child(2) {
-      --bottom-distance: 4vw;
-      --left-distance: -20vw; //final distance // -290 px constant
-      --width: 15vw;
-    }
-
     // Right upper
-    &:nth-child(3) {
+    &:nth-child(2 of .cloud) {
       --top-distance: 7vw;
       --right-distance: -18vw; // -95 px - 235 px constant
       // --right-distance: -95px;
       --width: 18vw;
     }
 
+
+    // Left bottom
+    &:nth-child(3 of .cloud) {
+      --bottom-distance: 4vw;
+      --left-distance: -20vw; //final distance // -290 px constant
+      --width: 15vw;
+    }
+
+
     // Right bottom
-    &:nth-child(4) {
+    &:nth-child(4 of .cloud) {
       --bottom-distance: 4vw;
       --right-distance: -16vw; // -70 px - 235 px constant
       --width: 13vw;
