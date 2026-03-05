@@ -21,7 +21,22 @@ class Utils {
         
         return `${d}/${m}/${y}`;
     }
-    
+
+    public static AdjustClasses(elementId: string, toAdd: string[], toRemove: string[] = []) {
+        let elementFromDom = document.getElementById(elementId)
+        if (!elementFromDom) {
+            throw new Error(`An element with the following id -> ${elementId} does not exist!`)
+        }
+        
+        let classList = elementFromDom.classList
+        if (toRemove) {
+            classList.remove(...toRemove)
+        }
+
+        if (toAdd) {
+            classList.add(...toAdd)
+        }
+    }   
 }
 
 
