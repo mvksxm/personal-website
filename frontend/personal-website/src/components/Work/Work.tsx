@@ -6,10 +6,9 @@ import Carousel from "../Carousel/Carousel";
 import Requestor from "../../utils/Requestor";
 import Bowser from "bowser";
 import FrameList from "../FrameList/FrameList";
+import {VERCEL_ENDPOINT, WORK_EXPERIENCE_COLLECTION} from '../../constants'
 
 // Global Vars
-const VERCEL_ENDPOINT: string = import.meta.env.VERCEL_SERVER_ENDPOINT ? import.meta.env.VERCEL_SERVER_ENDPOINT: "/api/request-handler";
-const WORK_EXPERIENCE_COLLECTION: string = import.meta.env.WORK_EXPERIENCE_COLLECTION ? import.meta.env.WORK_EXPERIENCE_COLLECTION : "workExperience";
 const experienceRequest = {
     "isList": true,
     "collectionName": WORK_EXPERIENCE_COLLECTION

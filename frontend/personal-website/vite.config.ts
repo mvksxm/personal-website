@@ -19,5 +19,6 @@ export default defineConfig({
   define: {
     "process.env.VERCEL_SERVER_ENDPOINT": JSON.stringify(process.env.VERCEL_SERVER_ENDPOINT),
     "process.env.WORK_EXPERIENCE_COLLECTION": JSON.stringify(process.env.WORK_EXPERIENCE_COLLECTION),
+    "process.env.RESUME_LINK": JSON.stringify(process.env.RESUME_LINK),
   }
 })

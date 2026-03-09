@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Navbar.css";
 import images from "../../../public/exporter"
 import { Collapse } from 'bootstrap';
+import { RESUME_LINK } from "../../constants";
 
 
 interface NavbarProps {
@@ -162,7 +163,7 @@ const Navbar = ({isFormedNav}: NavbarProps) => {
                 <button className={`nav-link ${section === "work" ? "active-selection" : ""}`} onClick={() => {setSection("work"); closeNavbar()}}>Work</button>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="https://drive.google.com/file/d/1yim5iJuommQANe2enJtWcjUDPp200eBA/view?usp=sharing" onClick={() => closeNavbar()}>Resume</a>
+                <a className="nav-link" href={RESUME_LINK} onClick={() => closeNavbar()}>Resume</a>
               </li>
               {/* <li className="nav-item">
                 <button className={`nav-link ${section === "projects" ? "active-selection" : ""}`} onClick={() => {setSection("projects"); closeNavbar()}}>Projects</button>
