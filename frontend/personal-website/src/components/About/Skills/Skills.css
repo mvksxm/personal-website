@@ -47,12 +47,6 @@
     margin-left: 2px;
 }
 
-@media (max-width: 500px) {
-    .personal-photo  {
-        width: 300px;
-    }
-}
-
 @media (max-width: 400px) {
     .skill {
         font-size: 10px;
